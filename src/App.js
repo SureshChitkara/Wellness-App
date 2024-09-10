@@ -1,39 +1,30 @@
-.App {
-  text-align: center;
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomeScreen from './components/HomeScreen';
+import NavBar from './components/NavBar';
+import JourneyPage from './components/JourneyPage';  // Import the JourneyPage component
+import About from './components/About';  // Example About component
+import Contact from './components/Contact';  // Example Contact component
+import MeditationLibrary from './components/MeditationLibrary'; // Import the MeditationLibrary component
+import VirtualTherapy from './components/VirtualTherapy'; // Import the VirtualTherapy component
+import './App.css';
+
+function App() {
+    return (
+        <Router>
+            <div className="App">
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<HomeScreen />} />
+                    <Route path="/journey" element={<JourneyPage />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/meditation-library" element={<MeditationLibrary />} />
+                    <Route path="/virtual-therapy" element={<VirtualTherapy />} /> {/* Add this line */}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  /* Replace the existing background color with your gradient background */
-
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+export default App;
