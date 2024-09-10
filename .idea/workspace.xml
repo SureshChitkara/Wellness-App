@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2078269b-6323-4103-b625-49ce34dccedb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/About.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/JourneyPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JourneyPage.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/assets/images/meditation.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/About.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Contact.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/HomeScreen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/JourneyPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MeditationLibrary.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/components/NavBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/VirtualTherapy.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
@@ -37,6 +42,14 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -59,6 +72,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -71,8 +85,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\schit\IdeaProjects\my-react-app\src" />
       <recent name="C:\Users\schit\IdeaProjects\my-react-app\src\components" />
+      <recent name="C:\Users\schit\IdeaProjects\my-react-app\src" />
       <recent name="C:\Users\schit\IdeaProjects\my-react-app\src\assests\images" />
     </key>
   </component>
@@ -106,7 +120,9 @@
       <workItem from="1725318291115" duration="1597000" />
       <workItem from="1725319938277" duration="1541000" />
       <workItem from="1725378434639" duration="8271000" />
-      <workItem from="1725409877616" duration="586000" />
+      <workItem from="1725409877616" duration="1362000" />
+      <workItem from="1725917323024" duration="3254000" />
+      <workItem from="1725974330195" duration="11982000" />
     </task>
     <servers />
   </component>
