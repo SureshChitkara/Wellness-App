@@ -25,8 +25,10 @@ function JourneyPage() {
 
             <section className="journey-section">
                 <h2>Mood Tracking</h2>
-                <p>Details about the third section go here.</p>
-                <button className="right-button">Button 3</button>
+                <p>Track your mood</p>
+                <Link to="/mood-tracking">
+                    <button className="right-button">Select</button>
+                </Link>
             </section>
         </div>
     );
