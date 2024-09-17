@@ -7,6 +7,8 @@ import About from './components/About';  // Example About component
 import Contact from './components/Contact';  // Example Contact component
 import MeditationLibrary from './components/MeditationLibrary'; // Import the MeditationLibrary component
 import VirtualTherapy from './components/VirtualTherapy'; // Import the VirtualTherapy component
+import MoodTracking from './components/MoodTracking'; // Import the VirtualTherapy component
+
 import './App.css';
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/meditation-library" element={<MeditationLibrary />} />
                     <Route path="/virtual-therapy" element={<VirtualTherapy />} /> {/* Add this line */}
+                    <Route path="/mood-tracking" element={<MoodTracking />} /> {/* Add this route */}
                 </Routes>
             </div>
         </Router>
