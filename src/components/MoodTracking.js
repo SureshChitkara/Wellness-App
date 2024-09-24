@@ -1,76 +1,45 @@
-// src/components/MoodTracking.js
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart, registerables } from 'chart.js';
-import { useNavigate } from 'react-router-dom';
+import 'chart.js/auto';
+import { MoodContext } from '../context/MoodContext';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
-Chart.register(...registerables); // Register Chart.js components
+const MoodTracking = () => {
+    const { moodData, timeData, currentTrack, currentTime, setCurrentTime } = useContext(MoodContext);
+    const navigate = useNavigate(); // Initialize useNavigate for navigation
 
-function MoodTracking() {
-    const navigate = useNavigate();
-    const [mood, setMood] = useState('');
-    const [comments, setComments] = useState('');
-    const [moodHistory, setMoodHistory] = useState([]);
+    // Simulate time passing for mood changes over time
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTime((prevTime) => prevTime + 1);
+        }, 5000); // Update time every 5 seconds
+        return () => clearInterval(interval); // Clean up interval
+    }, [setCurrentTime]);
 
-    // Function to map moods to numeric values for the chart
-    const moodToValue = (mood) => {
-        switch (mood) {
-            case 'Happy':
-                return 5;
-            case 'Calm':
-                return 4;
-            case 'Energetic':
-                return 3;
-            case 'Stressed':
-                return 2;
-            case 'Anxious':
-                return 1;
-            case 'Sad':
-                return 0;
-            default:
-                return null;
-        }
-    };
-
-    // Handle mood submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const newMoodEntry = {
-            mood,
-            comments,
-            date: new Date().toLocaleDateString(), // Store current date
-        };
-
-        // Save to state (or could save to localStorage/database)
-        setMoodHistory([...moodHistory, newMoodEntry]);
-
-        // Optionally clear the form after submission
-        setMood('');
-        setComments('');
-    };
-
-    // Prepare data for the chart
-    const chartData = {
-        labels: moodHistory.map((entry) => entry.date),
+    // Data for the chart
+    const data = {
+        labels: timeData, // Time (x-axis)
         datasets: [
             {
                 label: 'Mood Over Time',
-                data: moodHistory.map((entry) => moodToValue(entry.mood)),
+                data: moodData, // Mood values (y-axis)
                 borderColor: '#9c28c2',
-                fill: false,
-                tension: 0.1,
+                backgroundColor: 'rgba(156, 40, 194, 0.2)',
+                fill: true,
+                tension: 0.4,
             },
         ],
     };
 
+    // Handle back button click
     const handleBack = () => {
-        navigate('/journey'); // Navigate back to JourneyPage
+        navigate('/journey'); // Navigate back to the JourneyPage or any other route
     };
 
     return (
         <div style={{ padding: '20px', textAlign: 'center' }}>
             <h1>Mood Tracking</h1>
-            <p>How are you feeling today? Select your mood and share your thoughts.</p>
+            <p>Track how your mood changes based on the music you listen to.</p>
 
             {/* Back Button */}
             <button
@@ -86,78 +55,21 @@ function MoodTracking() {
                     cursor: 'pointer',
                 }}
             >
-                Back to Journey Page
+                Back
             </button>
 
-            {/* Mood Selection Form */}
-            <form onSubmit={handleSubmit} style={{ maxWidth: '400px', margin: '0 auto', textAlign: 'left' }}>
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Select Your Mood:</label>
-                    <select
-                        value={mood}
-                        onChange={(e) => setMood(e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '10px',
-                            borderRadius: '5px',
-                            border: '1px solid #ccc',
-                        }}
-                        required
-                    >
-                        <option value="">--Select Mood--</option>
-                        <option value="Happy">Happy</option>
-                        <option value="Calm">Calm</option>
-                        <option value="Stressed">Stressed</option>
-                        <option value="Anxious">Anxious</option>
-                        <option value="Sad">Sad</option>
-                        <option value="Energetic">Energetic</option>
-                    </select>
-                </div>
-
-                <div style={{ marginBottom: '15px' }}>
-                    <label style={{ display: 'block', marginBottom: '5px' }}>Additional Comments (Optional):</label>
-                    <textarea
-                        value={comments}
-                        onChange={(e) => setComments(e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '10px',
-                            borderRadius: '5px',
-                            border: '1px solid #ccc',
-                        }}
-                        rows="5"
-                        placeholder="Share anything on your mind..."
-                    ></textarea>
-                </div>
-
-                <button
-                    type="submit"
-                    style={{
-                        width: '100%',
-                        padding: '10px',
-                        backgroundColor: '#9c28c2',
-                        color: 'white',
-                        border: 'none',
-                        borderRadius: '5px',
-                        cursor: 'pointer',
-                        fontSize: '16px',
-                    }}
-                >
-                    Submit Mood
-                </button>
-            </form>
-
-            {/* Mood Tracking Chart */}
-            <div style={{ marginTop: '40px' }}>
-                <h2>Mood History</h2>
-                {moodHistory.length > 0 ? (
-                    <Line data={chartData} />
-                ) : (
-                    <p>No mood data available yet. Start tracking your mood!</p>
-                )}
+            <div style={{ width: '80%', margin: '0 auto', paddingBottom: '20px' }}>
+                <Line data={data} />
             </div>
+
+            {currentTrack && (
+                <div style={{ marginTop: '20px' }}>
+                    <h3>Currently Playing: {currentTrack.name}</h3>
+                    <p>Mood: {currentTrack.moodValue}</p>
+                </div>
+            )}
         </div>
     );
-}
+};
 
 export default MoodTracking;
